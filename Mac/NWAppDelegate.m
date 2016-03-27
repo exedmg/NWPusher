@@ -56,11 +56,18 @@
     
     NSString *payload = [_config valueForKey:@"payload"];
     _payloadField.string = payload.length ? payload : @"";
-    _payloadField.font = [NSFont fontWithName:@"Monaco" size:10];
+    _payloadField.font = [NSFont fontWithName:@"Monaco" size:12];
     _payloadField.enabledTextCheckingTypes = 0;
     _logField.enabledTextCheckingTypes = 0;
     [self updatePayloadCounter];
     NWLogInfo(@"");
+    
+//    [self.window setOpaque:NO]; // YES by default
+//    NSColor *semiTransparentBlue =
+//    [NSColor colorWithDeviceRed:0.9 green:0.9 blue:0.9 alpha:0.95];
+//    [self.window setBackgroundColor:semiTransparentBlue];
+    
+    [self.window setTitlebarAppearsTransparent:true];
 }
 
 - (void)applicationWillTerminate:(NSNotification *)notification
@@ -200,11 +207,21 @@
         NSMutableArray *pairs = @[].mutableCopy;
         for (NSURL *url in panel.URLs) {
             NSString *text = [NSString stringWithFormat:@"Enter password for %@", url.lastPathComponent];
-            NSAlert *alert = [NSAlert alertWithMessageText:text defaultButton:@"OK" alternateButton:@"Cancel" otherButton:nil informativeTextWithFormat:@""];
+            
+            NSAlert *alert = [[NSAlert alloc] init];
+            [alert addButtonWithTitle:@"OK"];
+            [alert addButtonWithTitle:@"Cancel"];
+            [alert setMessageText:text];
+            [alert setInformativeText:@""];
+            [alert setAlertStyle:NSWarningAlertStyle];
+             
+            
+//            NSAlert *alert = [NSAlert alertWithMessageText:text defaultButton:@"OK" alternateButton:@"Cancel" otherButton:nil informativeTextWithFormat:@""];
+//            
             NSSecureTextField *input = [[NSSecureTextField alloc] initWithFrame:NSMakeRect(0, 0, 200, 24)];
             alert.accessoryView = input;
             NSInteger button = [alert runModal];
-            if (button != NSAlertDefaultReturn) {
+            if (button != NSAlertFirstButtonReturn) {
                 return;
             }
             NSString *password = input.stringValue;

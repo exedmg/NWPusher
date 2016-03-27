@@ -494,7 +494,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "Mac/PusherMac-Info.plist";
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.noodlewerk.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = Pusher;
 				WRAPPER_EXTENSION = app;
@@ -512,7 +512,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "Mac/PusherMac-Info.plist";
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.noodlewerk.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = Pusher;
 				WRAPPER_EXTENSION = app;
